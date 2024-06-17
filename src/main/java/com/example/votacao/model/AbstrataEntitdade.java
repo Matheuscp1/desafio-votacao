@@ -13,10 +13,16 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @MappedSuperclass
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class AbstrataEntitdade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -26,22 +32,22 @@ public abstract class AbstrataEntitdade {
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy'T'HH:mm:ss'Z'", timezone = "GMT")
 	@Column(name = "data_criacao", nullable = false, updatable = false)
-	protected LocalDateTime createdAt;
+	protected LocalDateTime dataCriacao;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy'T'HH:mm:ss'Z'", timezone = "GMT")
 	@Column(name = "data_atualizacao")
-	protected LocalDateTime updateAt;
+	protected LocalDateTime dataAtualizacao;
 
 	// Getters e setters
 
 	@PrePersist
 	protected void onCreate() {
-		createdAt = LocalDateTime.now();
+		dataCriacao = LocalDateTime.now();
 	}
 
 	@PreUpdate
 	protected void onUpdate() {
-		updateAt =  LocalDateTime.now();
+		dataAtualizacao =  LocalDateTime.now();
 	}
 }
