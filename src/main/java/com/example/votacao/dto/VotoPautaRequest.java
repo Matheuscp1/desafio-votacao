@@ -10,7 +10,7 @@ public record VotoPautaRequest(
         @CPF(message = "cpf invalido")
         String cpf,
         @NotNull(message = "deve ser informada uma pauta")
-        Long idPauta,
+        String idPauta,
         @NotNull @Valid VotoRequest voto
 ) {
 }

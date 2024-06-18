@@ -6,11 +6,11 @@ import com.example.votacao.model.Pauta;
 import com.example.votacao.repository.PautaRepository;
 import com.example.votacao.service.interfaces.IPautaService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 
@@ -40,7 +40,7 @@ public class PautaService implements IPautaService {
         );
     }
 
-    public Pauta buscarPautaPorID(String id) {
+    public Pauta buscarPautaPorID(@NotNull String id) {
 
         Optional<Pauta> pauta = pautaRepository.findById(id);
 
