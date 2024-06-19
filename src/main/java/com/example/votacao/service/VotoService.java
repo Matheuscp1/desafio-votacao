@@ -1,5 +1,6 @@
 package com.example.votacao.service;
 
+import com.example.votacao.dto.ResultadoResponse;
 import com.example.votacao.exceptions.ConflictException;
 import com.example.votacao.exceptions.NotFoundException;
 import com.example.votacao.model.Associado;
@@ -7,7 +8,7 @@ import com.example.votacao.model.AssociadoPauta;
 import com.example.votacao.model.Pauta;
 import com.example.votacao.model.VotoPauta;
 import com.example.votacao.service.interfaces.IVotoService;
-import db.desafiovotacao.dto.ResultadoResponse;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

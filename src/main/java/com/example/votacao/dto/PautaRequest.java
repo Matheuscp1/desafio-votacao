@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size;
 
 public record PautaRequest(
         @NotBlank(message = "titulo nao pode estar em branco")
-        @Size(min = 7, max = 200, message = "deve conter de 7 a 200 caracteres")
+        @Size(min = 7, max = 200, message = "titulo conter de 7 a 200 caracteres")
         String titulo,
         String descricao,
 

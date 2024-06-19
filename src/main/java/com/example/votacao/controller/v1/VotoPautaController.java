@@ -1,14 +1,16 @@
 package com.example.votacao.controller.v1;
 
 import com.example.votacao.dto.ResultadoRequest;
+import com.example.votacao.dto.ResultadoResponse;
 import com.example.votacao.dto.VotoPautaRequest;
 import com.example.votacao.dto.VotoPautaResponse;
 import com.example.votacao.mappers.VotoPautaMapper;
 import com.example.votacao.model.Pauta;
 import com.example.votacao.service.PautaService;
 import com.example.votacao.service.VotoService;
-import db.desafiovotacao.dto.ResultadoResponse;
+
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -39,7 +41,7 @@ public class VotoPautaController {
     }
 
     @GetMapping
-    public ResponseEntity<ResultadoResponse> resultadoVotacao(@RequestBody @Valid ResultadoRequest resultadoRequest){
+    public ResponseEntity<ResultadoResponse> resultadoVotacao(@PathParam("id") @Valid ResultadoRequest resultadoRequest){
 
         Pauta pauta = pautaService.buscarPautaPorID(resultadoRequest.idPauta());
 

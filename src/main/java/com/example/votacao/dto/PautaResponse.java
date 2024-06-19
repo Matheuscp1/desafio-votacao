@@ -22,8 +22,8 @@ public record PautaResponse(
                 pauta.getId(),
                 pauta.getTitulo(),
                 pauta.getDescricao(),
-                pauta.getSessao().getInicioSessao().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-                pauta.getSessao().getFinalSessao().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+                pauta.getSessao().getInicioSessao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
+                pauta.getSessao().getFinalSessao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
         );
     }
 }

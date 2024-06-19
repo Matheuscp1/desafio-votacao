@@ -11,7 +11,7 @@ public record SessaoRequest(
         @NotBlank(message = "deve ser informada uma data de fim")
         String finalSessao
 ){
-        private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         public SessaoRequest(Sessao sessao){
                 this(sessao.getInicioSessao().format(dateTimeFormatter), sessao.getFinalSessao().format(dateTimeFormatter));
         }

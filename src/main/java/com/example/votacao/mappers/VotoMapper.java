@@ -10,7 +10,7 @@ public class VotoMapper {
 
     public static Voto mappearVoto(VotoRequest votoRequest){
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         return Voto.builder()
                 .voto(votoRequest.voto())

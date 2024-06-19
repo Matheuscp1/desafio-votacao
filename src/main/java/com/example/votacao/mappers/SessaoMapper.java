@@ -12,7 +12,7 @@ public class SessaoMapper {
 
         Sessao sessao = new Sessao();
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         sessao.setInicioSessao(LocalDateTime.parse(sessaoRequest.inicioSessao(), dateTimeFormatter));
         sessao.setFinalSessao(LocalDateTime.parse(sessaoRequest.finalSessao(), dateTimeFormatter));

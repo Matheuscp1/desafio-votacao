@@ -13,7 +13,7 @@ public record VotoRequest(
         @NotBlank(message = "data não pode estar em branco")
         String dataHoraVoto
 ) {
-        private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         public VotoRequest(Voto voto){
                 this(voto.getVoto(), voto.getDataHoraVoto().format(dateTimeFormatter));
         }
