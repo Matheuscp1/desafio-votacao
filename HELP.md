@@ -47,13 +47,12 @@ spring.datasource.password=123
 Mas se preferir você pode criar um banco com nome, usuário e senha da sua preferencia e alterar essas configurações
 no application.properties.
 
-#### Testes
+## Testes
 
-## Use no terminal mvn test para rodar os testes
+#### Use no terminal mvn test para rodar os testes
 
-##### Swagger
+## Swagger
 
-### URLS
 ```
 http://localhost:8080/swagger-ui/index.html
 http://localhost:8080/v3/api-docs
