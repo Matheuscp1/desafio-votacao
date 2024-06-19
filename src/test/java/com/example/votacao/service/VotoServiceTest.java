@@ -1,10 +1,10 @@
 package com.example.votacao.service;
 
+import com.example.votacao.dto.ResultadoResponse;
 import com.example.votacao.enums.EnumVoto;
 import com.example.votacao.exceptions.ConflictException;
 import com.example.votacao.exceptions.NotFoundException;
 import com.example.votacao.model.*;
-import db.desafiovotacao.dto.ResultadoResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

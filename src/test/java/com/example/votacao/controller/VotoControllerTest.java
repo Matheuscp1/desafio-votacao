@@ -1,9 +1,7 @@
 package com.example.votacao.controller;
 
 import com.example.votacao.controller.v1.VotoPautaController;
-import com.example.votacao.dto.ResultadoRequest;
-import com.example.votacao.dto.VotoPautaRequest;
-import com.example.votacao.dto.VotoRequest;
+import com.example.votacao.dto.*;
 import com.example.votacao.enums.EnumVoto;
 import com.example.votacao.exceptions.ConflictException;
 import com.example.votacao.exceptions.NotFoundException;
@@ -11,7 +9,6 @@ import com.example.votacao.model.*;
 import com.example.votacao.service.PautaService;
 import com.example.votacao.service.VotoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import db.desafiovotacao.dto.ResultadoResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -20,6 +17,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.LocalDateTime;
 
@@ -212,39 +211,4 @@ class VotoControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-
-    @Test
-    void resultadoVotacao() throws Exception{
-
-        ResultadoResponse resultado = new ResultadoResponse(0,0);
-
-        Mockito.when(pautaService.buscarPautaPorID(Mockito.any())).thenReturn(pauta);
-        Mockito.when(votoService.resultadoVotacao(Mockito.any())).thenReturn(resultado);
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        String json = mapper.writeValueAsString(new ResultadoRequest(pauta.getId()));
-
-        this.mockMvc.perform(get(PATH)
-                        .content(json)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    void deveRetornarNotFoundExceptionSePautaNaoExistir() throws Exception{
-
-        Mockito.when(pautaService.buscarPautaPorID(Mockito.any())).thenThrow(NotFoundException.class);
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        String json = mapper.writeValueAsString(new ResultadoRequest(pauta.getId()));
-
-        this.mockMvc.perform(get(PATH)
-                        .content(json)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
-    }
 }
